@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Lozi Application</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="interstitial_ads_1">interstitial_id_1</string>
+    <string name="interstitial_ads_2">interstitial_id_2</string>
+    <string name="interstitial_ads_3">interstitial_id_3</string>
+    <string name="native_ads">native_id</string>
+    <string name="banner_ads">banner_id</string>
+    <string name="update_link_key">update_link</string>
+    <string name="update_title_key">update_title</string>
+    <string name="update_message_key">update_message</string>
+</resources>

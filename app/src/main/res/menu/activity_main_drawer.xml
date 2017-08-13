@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/do_an"
+            android:icon="@drawable/ic_do_an"
+            android:title="Đồ ăn" />
+        <item
+            android:id="@+id/do_an_ship"
+            android:icon="@drawable/ic_do_an_ship"
+            android:title="Đồ ăn ship" />
+        <item
+            android:id="@+id/goc_con_gai"
+            android:icon="@drawable/ic_goc_con_gai"
+            android:title="Góc con gái" />
+        <item
+            android:id="@+id/do_con_trai"
+            android:icon="@drawable/ic_do_con_trai"
+            android:title="Đồ con trai" />
+        <item
+            android:id="@+id/my_pham"
+            android:icon="@drawable/ic_my_pham"
+            android:title="Mỹ phẩm" />
+        <item
+            android:id="@+id/do_dien_tu"
+            android:icon="@drawable/ic_do_dien_tu"
+            android:title="Đồ điện tử" />
+        <item
+            android:id="@+id/do_gia_dung"
+            android:icon="@drawable/ic_do_gia_dung"
+            android:title="Đồ gia dụng" />
+        <item
+            android:id="@+id/me_be"
+            android:icon="@drawable/ic_me_be"
+            android:title="Mẹ và bé" />
+        <item
+            android:id="@+id/idol_han_quoc"
+            android:icon="@drawable/ic_idol_han_quoc"
+            android:title="Idol Hàn Quốc" />
+        <item
+            android:id="@+id/xe_co"
+            android:icon="@drawable/ic_xe_co"
+            android:title="Xe cộ" />
+        <item
+            android:id="@+id/phu_kien_thoi_trang"
+            android:icon="@drawable/ic_phu_kien_thoi_trang"
+            android:title="Phụ kiện thời trang" />
+        <item
+            android:id="@+id/giay_sneaker"
+            android:icon="@drawable/ic_giay_sneaker"
+            android:title="Giày sneaker" />
+        <item
+            android:id="@+id/toc_mong_lamdep"
+            android:icon="@drawable/ic_toc_mong_lamdep"
+            android:title="Tóc, móng và làm đẹp" />
+        <item
+            android:id="@+id/thu_cung"
+            android:icon="@drawable/ic_thu_cung"
+            android:title="Thú cưng" />
+        <item
+            android:id="@+id/sach_truyen"
+            android:icon="@drawable/ic_sach_truyen"
+            android:title="Sách truyện" />
+        <item
+            android:id="@+id/dochoi_sothich"
+            android:icon="@drawable/ic_dochoi_sothich"
+            android:title="Đồ chơi và sở thích" />
+        <item
+            android:id="@+id/am_nhac"
+            android:icon="@drawable/ic_am_nhac"
+            android:title="Âm nhạc" />
+        <item
+            android:id="@+id/trang_tri_nha_cua"
+            android:icon="@drawable/ic_trangtrinhacua"
+            android:title="Vật dụng trang trí nhà cửa" />
+        <item
+            android:id="@+id/nha_phongtro"
+            android:icon="@drawable/ic_nha_phongtro"
+            android:title="Nhà và phòng trọ" />
+        <item
+            android:id="@+id/vesukien_giamgia"
+            android:icon="@drawable/ic_vesukien_giamgia"
+            android:title="Vé sự kiện\/Thẻ giảm giá" />
+        <item
+            android:id="@+id/hang_order"
+            android:icon="@drawable/ic_hang_order"
+            android:title="Hàng order trước" />
+        <item
+            android:id="@+id/khac"
+            android:icon="@drawable/ic_khac"
+            android:title="Khác" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+        </menu>
+    </item>
+
+</menu>
