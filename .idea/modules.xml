@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/LoziApplication.iml" filepath="$PROJECT_DIR$/LoziApplication.iml" />
       <module fileurl="file://D:\old_D\Workspace\Kotlin_Workspace\loziapplication\LoziApplication.iml" filepath="D:\old_D\Workspace\Kotlin_Workspace\loziapplication\LoziApplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://D:\old_D\Workspace\Kotlin_Workspace\loziapplication\app\app.iml" filepath="D:\old_D\Workspace\Kotlin_Workspace\loziapplication\app\app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/loziapplication.iml" filepath="$PROJECT_DIR$/loziapplication.iml" />
     </modules>
   </component>
 </project>
