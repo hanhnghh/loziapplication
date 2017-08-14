@@ -6,19 +6,25 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import android.view.View
 import android.webkit.WebChromeClient
+import android.webkit.WebView
 import android.webkit.WebViewClient
+import com.google.android.gms.ads.InterstitialAd
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    lateinit var adsUtil : AdsUtil
+    lateinit var mInterstitial : InterstitialAd
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-
+        adsUtil = AdsUtil(this)
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
@@ -26,8 +32,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         nav_view.setNavigationItemSelectedListener(this)
         webview.webChromeClient = WebChromeClient()
         webview.webViewClient = WebViewClient()
+
         webview.settings.javaScriptEnabled = true
         webview.loadUrl("https://lozi.vn")
+    }
+
+    override fun onStart(){
+        super.onStart()
+        mInterstitial = adsUtil.loadAdsNotShow()
     }
 
     override fun onBackPressed() {
@@ -42,7 +54,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     fun loadUrl(url : String){
+        if(mInterstitial.isLoaded)
+            mInterstitial.show()
         webview.loadUrl(url)
+        mInterstitial = adsUtil.loadAdsNotShow()
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

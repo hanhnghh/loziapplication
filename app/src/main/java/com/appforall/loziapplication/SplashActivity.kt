@@ -8,6 +8,8 @@ import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.InterstitialAd
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -29,6 +31,7 @@ class SplashActivity : AppCompatActivity() {
     val updateUrl = "https://mymotivationwebblog.wordpress.com/2017/08/13/lozi-configuration/"
     lateinit var okHttpClient : OkHttpClient
     lateinit var prefs : SharedPreferences
+    lateinit var adsUtil : AdsUtil
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -37,6 +40,7 @@ class SplashActivity : AppCompatActivity() {
         // Hide the status bar.
         val uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN
         decorView.systemUiVisibility = uiOptions
+        adsUtil = AdsUtil(this)
         prefs = PreferenceManager.getDefaultSharedPreferences(this)
         okHttpClient = initOkHttpClient()
         getUpdateInfo()
@@ -58,7 +62,6 @@ class SplashActivity : AppCompatActivity() {
                 val end = bodyContent.indexOf("[xyz]")
                 val link = bodyContent.substring(start + 5, end)
 
-                Log.d("han.hanh", link)
                 var request = Request.Builder()
                         .url(link)
                         .build()
@@ -72,8 +75,6 @@ class SplashActivity : AppCompatActivity() {
                     result += line
                 }
                 var entity = gson.fromJson(result, UpdateInfoEntity::class.java)
-                Log.d("han.hanh", entity.update_link)
-                Log.d("han.hanh", entity.interstitial_ads_1)
                 return entity
             }
         })
@@ -86,7 +87,19 @@ class SplashActivity : AppCompatActivity() {
                 if(t?.update == true){
                     showUpdateDialog()
                 }
+                adsUtil.loadAds().subscribe(object : Observer<InterstitialAd> {
+                    override fun onNext(t: InterstitialAd?) {
+                        showAds(t)
+                    }
 
+                    override fun onCompleted() {
+
+                    }
+
+                    override fun onError(e: Throwable?) {
+
+                    }
+                })
             }
 
             override fun onError(e: Throwable?) {
@@ -95,8 +108,7 @@ class SplashActivity : AppCompatActivity() {
             }
 
             override fun onCompleted() {
-                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-                finish()
+
             }
         })
     }
@@ -135,6 +147,27 @@ class SplashActivity : AppCompatActivity() {
 
     fun showUpdateDialog(){
 
+    }
+
+    fun showAds(ads : InterstitialAd?){
+        ads?.setAdListener(object : AdListener() {
+            override fun onAdClosed() {
+                super.onAdClosed()
+                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                finish()
+            }
+
+            override fun onAdFailedToLoad(i: Int) {
+                super.onAdFailedToLoad(i)
+                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                finish()
+            }
+
+            override fun onAdLoaded() {
+                super.onAdLoaded()
+                ads.show()
+            }
+        })
     }
 
 }
